@@ -1,58 +1,73 @@
-# ai-researcher
-[![Twitter Follow](https://img.shields.io/twitter/follow/mattshumer_?style=social)](https://twitter.com/mattshumer_) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fn2Xisstp0d30_bAaLPA1y-0_svojLF3?usp=sharing)
+# Fork of AI-Researcher by [@mattshumer](https://github.com/mshumer)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1G6GA2Od-x_cf-xt0B5jOz0Me-bBAsXVz?usp=sharing)
+This project is an evolving fork of the `ai-researcher` repository originally created by [@mattshumer](https://github.com/mshumer). The original version utilized Claude 3 and SERPAPI to conduct research. This fork modifies the original project to use Google Search API for searching capabilities. Below are the details of the modifications:
+Changes will be taking place quite a bit, but pushed updates may be sparse depending on free personal time
 
-The AI Researcher is an AI agent that utilizes Claude 3 and SERPAPI to perform comprehensive research on a given topic. It breaks down the research process into subtopics, generates individual reports for each subtopic, and then combines them into a final comprehensive report.
+## Changes Made
 
-## Features
+1. **Library Replacement**:
+   The `serpapi` library has been replaced with the `google-api-python-client` library. To install the new library, use the following command:
 
-- Generates a detailed checklist of subtopics to research for a given topic
-- Performs multiple rounds of searches and analysis for each subtopic
-- Generates individual reports for each subtopic
-- Incorporates feedback from a "boss" persona to identify missing information and improve the reports
-- Combines the subtopic reports into a comprehensive final report
+   ```shell
+   !pip install google-api-python-client
+   ```
 
-## Usage
+2. **Function Update**:
+   The `search_web` function has been updated to leverage the Google Search API:
 
-1. [Open the notebook in Google Colab](https://colab.research.google.com/drive/1fn2Xisstp0d30_bAaLPA1y-0_svojLF3?usp=sharing) or in a local Jupyter notebook.
+   ```python
+   from googleapiclient.discovery import build
 
-2. Replace the placeholders `ANTHROPIC_API_KEY` and `SERP_API_KEY` in the script with your actual API keys.
+   def search_web(search_term, api_key, cse_id):
+       service = build("customsearch", "v1", developerKey=api_key)
+       result = service.cse().list(q=search_term, cx=cse_id).execute()
+       return result
+   ```
 
-3. Run all the cells, and enter your topic to get started!
+3. **Configuration Update**:
+   The environment variables for API keys have been updated to use Google's infrastructure:
 
-4. After research + generation is complete, the report will be saved as `comprehensive_report.txt` in the same directory as the script. Use a Markdown viewer to view the final report.
+   ```python
+   GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY"
+   GOOGLE_CSE_ID = "YOUR_CUSTOM_SEARCH_ENGINE_ID"
+   ```
 
-## Customization
+4. **API Call Update**:
+   All calls to `search_web` have been updated to include the Google Search API key and Custom Search Engine ID:
 
-You can customize the behavior of the AI Research Assistant by modifying the following parameters in the script:
+   ```python
+   search_results = search_web(query, GOOGLE_API_KEY, GOOGLE_CSE_ID)
+   ```
 
-- `model`: The name of the Anthropic Claude AI model to use (default: "claude-3-haiku-20240307").
-- `max_tokens`: The maximum number of tokens to generate in each AI response (default: 2000).
-- `temperature`: The temperature value for controlling the randomness of the AI responses (default: 0.7).
+5. **Code Optimization**:
+   To enhance efficiency, the following optimizations were made:
+   - The number of API calls has been reduced by executing a single round of more targeted searches.
+   - The generation of search queries in each round has been adjusted to improve the quality and relevance of results.
 
-## Limitations
+6. **Concurrency Implementation**:
+   Concurrent requests have been enabled using the `concurrent.futures` module, significantly speeding up the search process.
 
-- The quality and accuracy of the generated reports depend on the performance of the Anthropic Claude AI and the relevance of the search results from SERPAPI.
-- The script may take a considerable amount of time to execute, especially for complex topics with multiple subtopics.
+7. **Caching Implementation**:
+   A caching mechanism has been added to store and reuse search results, minimizing redundant API calls.
 
-## License
+## Acknowledgements
 
-This project is licensed under the [MIT License](LICENSE).
+Credit goes to the original creator, [@mattshumer](https://github.com/mshumer), for the foundational work on the `ai-researcher`. The enhancements made in this fork aim to build upon the original project while adapting it for Google Search API integration.
 
-## Disclaimer
+## Notice of Modifications
 
-The AI Research Assistant is an experimental tool and should be used for informational purposes only. The generated reports may contain inaccuracies or inconsistencies. Always verify the information obtained from the script with reliable sources before making any decisions based on it.
+This document outlines the changes from the original project. It should be noted that while the core functionality remains the same, the search process is now tailored to work with the Google Search API. These modifications should improve the efficiency and potentially the effectiveness of the AI Researcher tool.
 
-## Contributing
-
-Contributions to the AI Research Assistant are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
+---
+This document is for the forked project and should be used in conjunction with the original project's documentation for a complete understanding of the system's capabilities and usage.
+```
 
 ## Acknowledgments
 
 - [Anthropic](https://www.anthropic.com/) for providing the Claude AI API.
 - [SERPAPI](https://serpapi.com/) for providing the search API.
+- Matt Shumer - [@mattshumer_](https://twitter.com/mattshumer_) for creating the ai-researcher notebook
 
 ## Contact
 
-Matt Shumer - [@mattshumer_](https://twitter.com/mattshumer_)
-
-Lastly, if you want to try something even cooler than this, sign up for [HyperWrite Personal Assistant](https://app.hyperwriteai.com/personalassistant) (most of my time is spent on this). It's basically an AI with access to real-time information that a) is incredible at writing naturally, and b) can operate your web browser to complete tasks for you.
+Zac Bagley - [@BinxNet](https://twitter.com/BinxNet)
