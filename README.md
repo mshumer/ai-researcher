@@ -1,5 +1,6 @@
 # Fork of AI-Researcher by [@mattshumer](https://github.com/mshumer)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1G6GA2Od-x_cf-xt0B5jOz0Me-bBAsXVz?usp=sharing)
+
 This project is an evolving fork of the `ai-researcher` repository originally created by [@mattshumer](https://github.com/mshumer). The original version utilized Claude 3 and SERPAPI to conduct research. This fork modifies the original project to use Google Search API for searching capabilities. Below are the details of the modifications:
 Changes will be taking place quite a bit, but pushed updates may be sparse depending on free personal time
 
