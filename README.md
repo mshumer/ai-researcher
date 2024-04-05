@@ -60,14 +60,3 @@ This document outlines the changes from the original project. It should be noted
 
 ---
 This document is for the forked project and should be used in conjunction with the original project's documentation for a complete understanding of the system's capabilities and usage.
-```
-
-## Acknowledgments
-
-- [Anthropic](https://www.anthropic.com/) for providing the Claude AI API.
-- [SERPAPI](https://serpapi.com/) for providing the search API.
-- Matt Shumer - [@mattshumer_](https://twitter.com/mattshumer_) for creating the ai-researcher notebook
-
-## Contact
-
-Zac Bagley - [@BinxNet](https://twitter.com/BinxNet)
