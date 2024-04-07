@@ -9,7 +9,7 @@ Changes will be taking place quite a bit, but pushed updates may be sparse depen
    
    Decided to refrain from creating a fork of the fork of the fork... but used it as the basis to recreate my book, [Claude_Researcher_Google_API.ipynb](https://github.com/Binxly/ai-researcher/blob/main/Claude_Researcher_Google_API.ipynb)
    
-## Key Features
+## Changes Made
 
 1. **Google Search API Integration**: The script now uses the Google Custom Search API to perform web searches instead of the SERP API. This allows for more reliable and accurate search results.
 
