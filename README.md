@@ -4,52 +4,43 @@
 This project is an evolving fork of the `ai-researcher` repository originally created by [@mattshumer](https://github.com/mshumer). The original version utilized Claude 3 and SERPAPI to conduct research. This fork modifies the original project to use Google Search API for searching capabilities. Below are the details of the modifications:
 Changes will be taking place quite a bit, but pushed updates may be sparse depending on free personal time
 
-## Changes Made
+# Notice:
+1. **The OAI_Researcher_Google_API.ipynb book was added, from [Jorskalz's OpenAI-Researcher](https://github.com/joriskalz/ai-researcher)**
+   
+   Decided to refrain from creating a fork of the fork of the fork... but used it as the basis to recreate my book, [Claude_Researcher_Google_API.ipynb](https://github.com/Binxly/ai-researcher/blob/main/Claude_Researcher_Google_API.ipynb)
+   
+## Key Features
 
-1. **Library Replacement**:
-   The `serpapi` library has been replaced with the `google-api-python-client` library. To install the new library, use the following command:
+1. **Google Search API Integration**: The script now uses the Google Custom Search API to perform web searches instead of the SERP API. This allows for more reliable and accurate search results.
 
-   ```shell
-   !pip install google-api-python-client
-   ```
+2. **Concurrent Search Requests**: The script utilizes concurrent.futures to perform multiple search requests simultaneously, improving the overall speed and efficiency of the research process.
 
-2. **Function Update**:
-   The `search_web` function has been updated to leverage the Google Search API:
+3. **Search Result Caching**: A search cache has been implemented to store the results of previous searches. This prevents redundant API calls and speeds up the research process by reusing cached results when possible.
 
-   ```python
-   from googleapiclient.discovery import build
+4. **Anthropic API Client**: The script now uses the official Anthropic API client library (anthropic) for a more reliable and efficient interaction with the Anthropic API.
 
-   def search_web(search_term, api_key, cse_id):
-       service = build("customsearch", "v1", developerKey=api_key)
-       result = service.cse().list(q=search_term, cx=cse_id).execute()
-       return result
-   ```
+5. **Configurable Models**: The script allows you to select different models for the research and report generation tasks. You can set the `RESEARCH_MODEL` and `REPORT_MODEL` variables to choose the desired models for each task.
 
-3. **Configuration Update**:
-   The environment variables for API keys have been updated to use Google's infrastructure:
+6. **Environment Variables**: API keys and other sensitive information are now stored as environment variables. You can set the `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`, and `GOOGLE_CSE_ID` variables in your environment or replace the `os.getenv()` calls with your actual API keys.
 
-   ```python
-   GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY"
-   GOOGLE_CSE_ID = "YOUR_CUSTOM_SEARCH_ENGINE_ID"
-   ```
+7. **Error Handling**: Improved error handling has been added throughout the script to gracefully handle and report any errors that may occur during the research and report generation process.
 
-4. **API Call Update**:
-   All calls to `search_web` have been updated to include the Google Search API key and Custom Search Engine ID:
+8. **Markdown Formatting**: The generated reports are now formatted using Markdown, making them more readable and visually appealing.
 
-   ```python
-   search_results = search_web(query, GOOGLE_API_KEY, GOOGLE_CSE_ID)
-   ```
+9. **Report Continuation**: If the generated comprehensive report is cut short, the script will automatically generate additional content to ensure a complete and comprehensive report.
 
-5. **Code Optimization**:
-   To enhance efficiency, the following optimizations were made:
-   - The number of API calls has been reduced by executing a single round of more targeted searches.
-   - The generation of search queries in each round has been adjusted to improve the quality and relevance of results.
+10. **Saving Reports**: The generated comprehensive report is now saved in a dedicated "reports" directory with a filename based on the research topic. The script handles the creation of the directory if it doesn't exist.
 
-6. **Concurrency Implementation**:
-   Concurrent requests have been enabled using the `concurrent.futures` module, significantly speeding up the search process.
+## Usage
 
-7. **Caching Implementation**:
-   A caching mechanism has been added to store and reuse search results, minimizing redundant API calls.
+To use the Comprehensive Research Report Generator:
+
+1. Set up your environment variables or replace the `os.getenv()` calls with your actual API keys.
+2. Run the script and enter your desired research topic when prompted.
+3. The script will generate a subtopic checklist, perform research on each subtopic, and generate individual subtopic reports.
+4. Finally, it will combine the subtopic reports into a comprehensive report and save it as a Markdown file in the "reports" directory.
+
+Note: The script uses the Anthropic API and Google Custom Search API, which may incur costs based on usage. Please review the pricing and usage limits of these APIs before running the script.
 
 ## Acknowledgements
 
