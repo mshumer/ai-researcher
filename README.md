@@ -4,6 +4,11 @@
 This project is an evolving fork of the `ai-researcher` repository originally created by [@mattshumer](https://github.com/mshumer). The original version utilized Claude 3 and SERPAPI to conduct research. This fork modifies the original project to use Google Search API for searching capabilities. Below are the details of the modifications:
 Changes will be taking place quite a bit, but pushed updates may be sparse depending on free personal time
 
+#Recent:
+1. **The OAI_Researcher_Google_API.ipynb book was added, from [Jorskalz AI-Researcher, a fork of my fork](https://github.com/joriskalz/ai-researcher)**
+   
+   Decided to refrain from creating a fork of the fork of the fork... but used it as the basis to recreate my book, [Claude_Researcher_Google_API.ipynb](https://github.com/Binxly/ai-researcher/blob/main/Claude_Researcher_Google_API.ipynb)
+   
 ## Changes Made
 
 1. **Library Replacement**:
