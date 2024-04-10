@@ -3,6 +3,9 @@
 
 The AI Researcher is an AI agent that utilizes Claude 3 and SERPAPI to perform comprehensive research on a given topic. It breaks down the research process into subtopics, generates individual reports for each subtopic, and then combines them into a final comprehensive report.
 
+## *New 4/9/24: The Gemini 1.5 Pro | YouTube Researcher Version*
+I've added a new version of ai-researcher that takes advantage of Google's Gemini 1.5 Pro model. This version listens to a set of YouTube videos about a specific topic and creates a report based on their contents. Try it out with the `Gemini_Youtube_Researcher.ipynb` notebook in the repo!
+
 ## Features
 
 - Generates a detailed checklist of subtopics to research for a given topic
