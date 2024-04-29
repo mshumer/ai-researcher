@@ -1,20 +1,3 @@
-<<<<<<< Updated upstream
-# ai-researcher
-[![Twitter Follow](https://img.shields.io/twitter/follow/mattshumer_?style=social)](https://twitter.com/mattshumer_) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fn2Xisstp0d30_bAaLPA1y-0_svojLF3?usp=sharing)
-
-The AI Researcher is an AI agent that utilizes Claude 3 and SERPAPI to perform comprehensive research on a given topic. It breaks down the research process into subtopics, generates individual reports for each subtopic, and then combines them into a final comprehensive report.
-
-## *New 4/9/24: The Gemini 1.5 Pro | YouTube Researcher Version*
-I've added a new version of ai-researcher that takes advantage of Google's Gemini 1.5 Pro model. This version listens to a set of YouTube videos about a specific topic and creates a report based on their contents. Try it out with the `Gemini_Youtube_Researcher.ipynb` notebook in the repo!
-
-## Features
-
-- Generates a detailed checklist of subtopics to research for a given topic
-- Performs multiple rounds of searches and analysis for each subtopic
-- Generates individual reports for each subtopic
-- Incorporates feedback from a "boss" persona to identify missing information and improve the reports
-- Combines the subtopic reports into a comprehensive final report
-=======
 # AI Research Assistants
 
 This repository contains a variety of AI-assisted research tools and sub-agent pipelines designed to aid in various tasks.
